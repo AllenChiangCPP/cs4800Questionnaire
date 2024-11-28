@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Matches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .match {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .match img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        .details {
+            flex: 1;
+        }
+        .details h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #444;
+        }
+        .details p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .score {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Top Matches</h1>
+        
+        {% if matches %}
+            {% for match, score in matches %}
+            <div class="match">
+                <!-- Use base64 data URI for displaying images -->
+                <img src="data:image/jpeg;base64,{{ match.img }}" alt="Clothing Image">
+                <div class="details">
+                    <h2>{{ match.colorName }}</h2>
+                    <p><strong>Style:</strong> {{ match.style }}</p>
+                    <p><strong>Fit:</strong> {{ match.fit }}</p>
+                    <p><strong>Price Range:</strong> {{ match.price_range }}</p>
+                    <p><strong>Occasion:</strong> {{ match.occasion }}</p>
+                    <p><strong>Patterns:</strong> {{ match.patterns }}</p>
+                    <p><strong>Fabrics:</strong> {{ match.fabrics }}</p>
+                    <p><strong>Seasons:</strong> {{ match.seasons }}</p>
+                    <p class="score">Match Score: {{ score }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No matches found. Please try again with different preferences.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

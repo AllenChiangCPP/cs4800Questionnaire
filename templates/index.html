@@ -1,0 +1,22 @@
+<form id="questionnaireForm" method="POST" action="{{ url_for('submit') }}">
+    <!-- The questions are rendered dynamically -->
+    {% for key, question in questions.items() %}
+    <div class="question">
+        <p>{{ question['question'] }}</p>
+        {% if question['type'] == 'multiple' %}
+            {% for option in question['options'] %}
+                <label>
+                    <input type="checkbox" name="{{ key }}" value="{{ option }}"> {{ option }}
+                </label>
+            {% endfor %}
+        {% else %}
+            {% for option in question['options'] %}
+                <label>
+                    <input type="radio" name="{{ key }}" value="{{ option }}"> {{ option }}
+                </label>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>

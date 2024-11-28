@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+}
+
+/* question type */
+.question {
+    margin-bottom: 5px;
+}
+
+/* questions */
+.question label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* checkboxes */
+.question input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* radio buttons */
+.question input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* styling for the responses section */
+#responses {
+    margin-top: 10px;
+}

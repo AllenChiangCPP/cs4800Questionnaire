@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire Responses</title>
+    <link rel="stylesheet" href="http://127.0.0.1:5000/static/css/styles.css">
+</head>
+<body>
+    <h1>Your Responses</h1>
+    <ul>
+        <!-- Loop through the responses and display each one -->
+        {% for question, answers in responses.items() %}
+        <li>
+            <strong>{{ question | capitalize }}</strong>: 
+            {{ answers | join(', ') }}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="http://127.0.0.1:5000/template/index.html">Go Back</a>
+</body>
+</html>
